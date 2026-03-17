@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "LinkedIn Rich Post",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Enhance LinkedIn's post composer with a rich text editor — bold, italic, lists, emojis, and more.",
   "permissions": ["activeTab", "storage"],
   "icons": {
