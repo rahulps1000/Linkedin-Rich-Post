@@ -1,0 +1,304 @@
+/*
+ * LinkedIn Rich Post — Content Styles
+ *
+ * Uses high-specificity selectors with !important to override both
+ * LinkedIn's global styles and Quill's Snow theme.
+ */
+
+/* ─── Container ─── */
+#lrp-container.lrp-container {
+  position: relative !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  margin: 0 !important;
+  animation: lrpFadeIn 0.25s ease-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+  overflow: visible !important;
+  z-index: 100 !important;
+  color: #191919 !important;
+}
+
+@keyframes lrpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Toolbar ─── */
+#lrp-container .lrp-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  padding: 6px 10px !important;
+  border-bottom: 1px solid #ebebeb !important;
+  background: #f8f8f8 !important;
+  border-radius: 8px 8px 0 0 !important;
+  flex-wrap: wrap !important;
+}
+
+#lrp-container .lrp-toolbar-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  color: #555555 !important;
+  font-size: 14px !important;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', sans-serif !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  position: relative !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+#lrp-container .lrp-toolbar-btn:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
+  color: #1a1a1a !important;
+}
+
+#lrp-container .lrp-toolbar-btn.active {
+  background: rgba(10, 102, 194, 0.12) !important;
+  color: #0a66c2 !important;
+}
+
+#lrp-container .lrp-toolbar-btn:active {
+  transform: scale(0.92) !important;
+}
+
+#lrp-container .lrp-toolbar-separator {
+  display: inline-block !important;
+  width: 1px !important;
+  height: 20px !important;
+  background: #e0e0e0 !important;
+  margin: 0 4px !important;
+}
+
+/* ─── Quill Editor Area ─── */
+#lrp-container #lrp-editor {
+  min-height: 140px !important;
+  max-height: 400px !important;
+  overflow-y: auto !important;
+  padding: 12px 16px !important;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #191919 !important;
+  background: #ffffff !important;
+}
+
+#lrp-container #lrp-editor:focus {
+  outline: none !important;
+}
+
+/* Quill's inner .ql-editor div */
+#lrp-container #lrp-editor .ql-editor {
+  padding: 0 !important;
+  min-height: 120px !important;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #191919 !important;
+  background: #ffffff !important;
+  border: none !important;
+}
+
+/* Quill placeholder text */
+#lrp-container #lrp-editor .ql-editor.ql-blank::before {
+  color: #999999 !important;
+  font-style: normal !important;
+  left: 16px !important;
+  right: 16px !important;
+}
+
+#lrp-container #lrp-editor .ql-editor p {
+  margin: 0 0 4px 0 !important;
+  color: #191919 !important;
+}
+
+#lrp-container #lrp-editor .ql-editor ol,
+#lrp-container #lrp-editor .ql-editor ul {
+  padding-left: 24px !important;
+  margin: 4px 0 !important;
+  color: #191919 !important;
+}
+
+#lrp-container #lrp-editor .ql-editor li {
+  margin: 2px 0 !important;
+  color: #191919 !important;
+}
+
+#lrp-container #lrp-editor .ql-editor strong {
+  font-weight: 700 !important;
+  color: inherit !important;
+}
+
+#lrp-container #lrp-editor .ql-editor em {
+  font-style: italic !important;
+  color: inherit !important;
+}
+
+#lrp-container #lrp-editor .ql-editor u {
+  text-decoration: underline !important;
+  color: inherit !important;
+}
+
+/* Custom scrollbar */
+#lrp-container #lrp-editor::-webkit-scrollbar {
+  width: 6px;
+}
+
+#lrp-container #lrp-editor::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#lrp-container #lrp-editor::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+#lrp-container #lrp-editor::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* ─── Character Count ─── */
+#lrp-container .lrp-char-count {
+  padding: 4px 16px 8px !important;
+  font-size: 12px !important;
+  color: #999999 !important;
+  text-align: right !important;
+  background: #ffffff !important;
+  border-radius: 0 0 8px 8px !important;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', sans-serif !important;
+  user-select: none !important;
+}
+
+/* ─── Emoji Picker ─── */
+#lrp-container .lrp-emoji-picker {
+  position: absolute !important;
+  top: 44px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 10001 !important;
+  background: #ffffff !important;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  padding: 12px !important;
+  width: 304px !important;
+  animation: lrpFadeIn 0.15s ease-out;
+}
+
+#lrp-container .lrp-emoji-grid {
+  display: grid !important;
+  grid-template-columns: repeat(8, 1fr) !important;
+  gap: 2px !important;
+}
+
+#lrp-container .lrp-emoji-btn {
+  width: 34px !important;
+  height: 34px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  font-size: 20px !important;
+  cursor: pointer !important;
+  transition: all 0.12s ease !important;
+  padding: 0 !important;
+}
+
+#lrp-container .lrp-emoji-btn:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
+  transform: scale(1.15) !important;
+}
+
+#lrp-container .lrp-emoji-btn:active {
+  transform: scale(0.95) !important;
+}
+
+/* ─── Force override Quill Snow theme ─── */
+/* Kill all Quill theme borders and backgrounds */
+#lrp-container .ql-toolbar {
+  display: none !important;
+}
+
+#lrp-container .ql-container {
+  border: none !important;
+  background: #ffffff !important;
+  color: #191919 !important;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', sans-serif !important;
+  font-size: 14px !important;
+}
+
+#lrp-container .ql-container.ql-snow {
+  border: none !important;
+  background: #ffffff !important;
+}
+
+#lrp-container .ql-snow .ql-editor {
+  padding: 0 !important;
+  color: #191919 !important;
+  background: #ffffff !important;
+}
+
+/* Quill tooltip (link editor etc) — hide it */
+#lrp-container .ql-tooltip {
+  display: none !important;
+}
+
+/* Quill clipboard paste formatting — reset */
+#lrp-container .ql-clipboard {
+  position: absolute !important;
+  left: -100000px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* ─── LinkedIn-specific overrides ─── */
+.share-creation-state__text-editor {
+  overflow: visible !important;
+}
+
+.share-box .lrp-container {
+  margin: 8px 0 !important;
+}
+
+/* ─── Force all text inside our editor to be dark on white ─── */
+#lrp-container,
+#lrp-container *:not(.lrp-emoji-btn) {
+  color-scheme: light !important;
+}
+
+#lrp-container #lrp-editor *,
+#lrp-container #lrp-editor .ql-editor *,
+#lrp-container .ql-container * {
+  color: #191919 !important;
+  background-color: transparent !important;
+}
+
+/* Re-apply specific backgrounds that need to be white */
+#lrp-container #lrp-editor,
+#lrp-container .ql-container,
+#lrp-container .ql-container.ql-snow,
+#lrp-container .ql-snow .ql-editor,
+#lrp-container #lrp-editor .ql-editor {
+  background-color: #ffffff !important;
+}
