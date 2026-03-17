@@ -17,6 +17,8 @@
   overflow: visible !important;
   z-index: 100 !important;
   color: #191919 !important;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    box-shadow 0.2s ease !important;
 }
 
 @keyframes lrpFadeIn {
@@ -281,24 +283,149 @@
   margin: 8px 0 !important;
 }
 
-/* ─── Force all text inside our editor to be dark on white ─── */
-#lrp-container,
-#lrp-container *:not(.lrp-emoji-btn) {
+/* ─── Force all text inside our editor — theme aware ─── */
+#lrp-container:not(.lrp-dark),
+#lrp-container:not(.lrp-dark) *:not(.lrp-emoji-btn) {
   color-scheme: light !important;
 }
 
-#lrp-container #lrp-editor *,
-#lrp-container #lrp-editor .ql-editor *,
-#lrp-container .ql-container * {
+#lrp-container:not(.lrp-dark) #lrp-editor *,
+#lrp-container:not(.lrp-dark) #lrp-editor .ql-editor *,
+#lrp-container:not(.lrp-dark) .ql-container * {
   color: #191919 !important;
   background-color: transparent !important;
 }
 
-/* Re-apply specific backgrounds that need to be white */
-#lrp-container #lrp-editor,
-#lrp-container .ql-container,
-#lrp-container .ql-container.ql-snow,
-#lrp-container .ql-snow .ql-editor,
-#lrp-container #lrp-editor .ql-editor {
+/* Re-apply specific backgrounds that need to be white (light mode) */
+#lrp-container:not(.lrp-dark) #lrp-editor,
+#lrp-container:not(.lrp-dark) .ql-container,
+#lrp-container:not(.lrp-dark) .ql-container.ql-snow,
+#lrp-container:not(.lrp-dark) .ql-snow .ql-editor,
+#lrp-container:not(.lrp-dark) #lrp-editor .ql-editor {
   background-color: #ffffff !important;
 }
+
+/* ══════════════════════════════════════════════════
+   DARK MODE — activated via .lrp-dark class
+   Colors match LinkedIn's native dark theme palette.
+   ══════════════════════════════════════════════════ */
+
+/* ─── Dark: Container ─── */
+#lrp-container.lrp-dark {
+  background: #1d2226 !important;
+  border-color: #38434f !important;
+  color: #e8e8e8 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+#lrp-container.lrp-dark,
+#lrp-container.lrp-dark *:not(.lrp-emoji-btn) {
+  color-scheme: dark !important;
+}
+
+/* ─── Dark: Toolbar ─── */
+#lrp-container.lrp-dark .lrp-toolbar {
+  background: #283138 !important;
+  border-bottom-color: #38434f !important;
+}
+
+#lrp-container.lrp-dark .lrp-toolbar-btn {
+  color: #b0b7bc !important;
+}
+
+#lrp-container.lrp-dark .lrp-toolbar-btn:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #e8e8e8 !important;
+}
+
+#lrp-container.lrp-dark .lrp-toolbar-btn.active {
+  background: rgba(112, 181, 249, 0.15) !important;
+  color: #70b5f9 !important;
+}
+
+#lrp-container.lrp-dark .lrp-toolbar-separator {
+  background: #38434f !important;
+}
+
+/* ─── Dark: Editor Area ─── */
+#lrp-container.lrp-dark #lrp-editor {
+  color: #e8e8e8 !important;
+  background: #1d2226 !important;
+}
+
+#lrp-container.lrp-dark #lrp-editor .ql-editor {
+  color: #e8e8e8 !important;
+  background: #1d2226 !important;
+}
+
+#lrp-container.lrp-dark #lrp-editor *,
+#lrp-container.lrp-dark #lrp-editor .ql-editor *,
+#lrp-container.lrp-dark .ql-container * {
+  color: #e8e8e8 !important;
+  background-color: transparent !important;
+}
+
+#lrp-container.lrp-dark #lrp-editor,
+#lrp-container.lrp-dark .ql-container,
+#lrp-container.lrp-dark .ql-container.ql-snow,
+#lrp-container.lrp-dark .ql-snow .ql-editor,
+#lrp-container.lrp-dark #lrp-editor .ql-editor {
+  background-color: #1d2226 !important;
+}
+
+#lrp-container.lrp-dark #lrp-editor .ql-editor p {
+  color: #e8e8e8 !important;
+}
+
+#lrp-container.lrp-dark #lrp-editor .ql-editor ol,
+#lrp-container.lrp-dark #lrp-editor .ql-editor ul,
+#lrp-container.lrp-dark #lrp-editor .ql-editor li {
+  color: #e8e8e8 !important;
+}
+
+/* Dark placeholder */
+#lrp-container.lrp-dark #lrp-editor .ql-editor.ql-blank::before {
+  color: #6b7785 !important;
+}
+
+/* Dark scrollbar */
+#lrp-container.lrp-dark #lrp-editor::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+#lrp-container.lrp-dark #lrp-editor::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ─── Dark: Character Count ─── */
+#lrp-container.lrp-dark .lrp-char-count {
+  background: #1d2226 !important;
+  color: #6b7785 !important;
+}
+
+/* ─── Dark: Emoji Picker ─── */
+#lrp-container.lrp-dark .lrp-emoji-picker {
+  background: #283138 !important;
+  border-color: #38434f !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+#lrp-container.lrp-dark .lrp-emoji-btn:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ─── Dark: Quill overrides ─── */
+#lrp-container.lrp-dark .ql-container {
+  background: #1d2226 !important;
+  color: #e8e8e8 !important;
+}
+
+#lrp-container.lrp-dark .ql-container.ql-snow {
+  background: #1d2226 !important;
+}
+
+#lrp-container.lrp-dark .ql-snow .ql-editor {
+  color: #e8e8e8 !important;
+  background: #1d2226 !important;
+}
+

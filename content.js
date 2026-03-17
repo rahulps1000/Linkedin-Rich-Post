@@ -16,6 +16,7 @@
   let observer = null;
   let isEnabled = true;
   let charCountInterval = null;
+  let themeObserver = null;
 
   // ───────────────────────────────────────────────
   //  Selectors — LinkedIn changes class names often,
@@ -62,6 +63,55 @@
       }
     }
     return null;
+  }
+
+  // ───────────────────────────────────────────────
+  //  Dark Mode Detection
+  // ───────────────────────────────────────────────
+
+  /**
+   * Checks whether LinkedIn is currently in dark mode.
+   * LinkedIn toggles a class on <body> or <html> when the user
+   * switches themes. We check several known indicators.
+   */
+  function isLinkedInDarkMode() {
+    const html = document.documentElement;
+    const body = document.body;
+    return (
+      body.classList.contains('artdeco-theme--dark') ||
+      html.classList.contains('theme--dark') ||
+      body.dataset.darkMode === 'true' ||
+      html.dataset.theme === 'dark' ||
+      // Fallback: inspect computed background color of LinkedIn's chrome
+      getComputedStyle(body).colorScheme === 'dark'
+    );
+  }
+
+  /**
+   * Add or remove the `lrp-dark` class on our editor container
+   * so CSS rules can style for dark mode.
+   */
+  function applyTheme() {
+    const container = document.getElementById('lrp-container');
+    if (!container) return;
+    container.classList.toggle('lrp-dark', isLinkedInDarkMode());
+  }
+
+  /**
+   * Watch the <body> element for class/attribute changes that
+   * indicate a theme switch and re-apply our theme accordingly.
+   */
+  function watchThemeChanges() {
+    if (themeObserver) themeObserver.disconnect();
+
+    themeObserver = new MutationObserver(() => {
+      applyTheme();
+    });
+
+    // Observe both <html> and <body> for class / attribute changes
+    const config = { attributes: true, attributeFilter: ['class', 'data-dark-mode', 'data-theme', 'style'] };
+    themeObserver.observe(document.body, config);
+    themeObserver.observe(document.documentElement, config);
   }
 
   /**
@@ -519,6 +569,10 @@
       quillInstance.focus();
     }, 100);
 
+    // ─── Apply dark mode if LinkedIn is dark ───
+    applyTheme();
+    watchThemeChanges();
+
     console.log(
       "[LinkedIn Rich Post] ✅ Rich text editor injected successfully.",
     );
@@ -613,6 +667,11 @@
   function cleanupEditor() {
     if (quillInstance) {
       quillInstance = null;
+    }
+
+    if (themeObserver) {
+      themeObserver.disconnect();
+      themeObserver = null;
     }
 
     const container = document.getElementById("lrp-container");
