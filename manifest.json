@@ -3,7 +3,7 @@
   "name": "LinkedIn Rich Post",
   "version": "1.0.1",
   "description": "Enhance LinkedIn's post composer with a rich text editor — bold, italic, lists, emojis, and more.",
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["storage"],
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
