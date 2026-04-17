@@ -1,47 +1,53 @@
 # LinkedIn Rich Post ✍️
 
-> A Chrome extension that enhances LinkedIn's post composer with a rich text editor — supporting **bold**, *italic*, <u>underline</u>, lists, emojis, and more.
+> A Chrome extension that adds a **floating rich text toolbar** to LinkedIn — format your posts, comments, and DMs with **bold**, *italic*, <u>underline</u>, ~~strikethrough~~, `monospace`, and lists using Unicode characters that survive LinkedIn's formatting restrictions.
 
 ![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-34A853)
 ![License](https://img.shields.io/badge/License-MIT-blue)
+![No Build Step](https://img.shields.io/badge/Build-None%20Required-orange)
 
 ---
 
 ## ✨ Features
 
-| Feature | Description |
-|---------|-------------|
-| 🔤 **Rich Text Formatting** | Bold, Italic, Underline with toolbar buttons or keyboard shortcuts |
-| 📝 **Lists** | Bullet lists and numbered lists |
-| 😊 **Emoji Picker** | Inline emoji grid with 56 commonly used emojis |
-| 🔢 **Character Count** | Real-time character counter in the editor and popup |
-| 🔄 **Unicode Formatting** | Converts bold/italic to Unicode characters (𝐁𝐨𝐥𝐝, 𝘐𝘵𝘢𝘭𝘪𝘤) so formatting persists after posting |
-| 🌙 **Dark Mode** | Automatically adapts to your system's dark mode preference |
-| ⚡ **Toggle On/Off** | Enable or disable the extension from the popup without uninstalling |
-| 🧹 **Clear Formatting** | One-click button to strip all formatting from selected text |
+| Feature                       | Description                                                                         |
+| ----------------------------- | ----------------------------------------------------------------------------------- |
+| 🔤 **Bold**                   | Converts selected text to 𝗕𝗼𝗹𝗱 (Mathematical Sans-Serif Bold)                      |
+| 🔤 **Italic**                 | Converts selected text to 𝘐𝘵𝘢𝘭𝘪𝘤 (Mathematical Sans-Serif Italic)                  |
+| 🔤 **Bold Italic**            | Converts selected text to 𝘽𝙤𝙡𝙙 𝙄𝙩𝙖𝙡𝙞𝙘 (Mathematical Sans-Serif Bold Italic)       |
+| 🔤 **Monospace**              | Converts selected text to 𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎 (Mathematical Monospace)                      |
+| 🔡 **Underline**              | Applies U̲n̲d̲e̲r̲l̲i̲n̲e̲ using combining character (U+0332)                               |
+| 🔡 **Strikethrough**          | Applies S̶t̶r̶i̶k̶e̶t̶h̶r̶o̶u̶g̶h̶ using combining character (U+0336)                       |
+| 📝 **Bullet & Numbered Lists**| Prefixes selected lines with `•` or `1. 2. 3.`                                     |
+| 🧹 **Clear Formatting**       | Strips all Unicode formatting back to plain ASCII                                   |
+| ⚡ **Toggle On/Off**          | Enable or disable from the popup without uninstalling                                |
+| 🌐 **Works Everywhere**       | Posts, comments, DMs — any LinkedIn text input area                                  |
 
 ---
 
 ## 📸 How It Works
 
-1. **Open LinkedIn** and click "Start a post"
-2. The native editor is **automatically replaced** with the rich text editor
-3. Use the **toolbar** to format your text
-4. Click **Post** — the content is synced to LinkedIn and posted normally
+1. **Open LinkedIn** and click into any text input — post composer, comment, or DM
+2. A **floating formatting toolbar** appears above the editor
+3. **Select text** and click a format button (or type first, then select & format)
+4. The text is instantly converted to Unicode characters — **no HTML, no workarounds**
+5. Click **Post** / **Comment** / **Send** — formatting is preserved as-is
 
-### Formatting Output
+### Why Unicode?
 
-LinkedIn strips HTML from posts. To preserve formatting, this extension converts styled text to **Unicode Mathematical Alphanumeric Symbols**:
+LinkedIn strips all HTML from posts. This extension bypasses that limitation by converting text to **Unicode Mathematical Alphanumeric Symbols**, which LinkedIn renders natively:
 
-| Format | Input | Output |
-|--------|-------|--------|
-| Bold | `Hello` | `𝐇𝐞𝐥𝐥𝐨` |
-| Italic | `Hello` | `𝘏𝘦𝘭𝘭𝘰` |
-| Bold + Italic | `Hello` | `𝑯𝒆𝒍𝒍𝒐` |
-| Underline | `Hello` | `H̲e̲l̲l̲o̲` |
-| Bullet List | — | `• Item` |
-| Numbered List | — | `1. Item` |
+| Format        | Input   | Output  |
+| ------------- | ------- | ------- |
+| Bold          | `Hello` | 𝗛𝗲𝗹𝗹𝗼   |
+| Italic        | `Hello` | 𝘏𝘦𝘭𝘭𝘰   |
+| Bold Italic   | `Hello` | 𝙃𝙚𝙡𝙡𝙤   |
+| Monospace     | `Hello` | 𝙷𝚎𝚕𝚕𝚘   |
+| Underline     | `Hello` | H̲e̲l̲l̲o̲   |
+| Strikethrough | `Hello` | H̶e̶l̶l̶o̶   |
+| Bullet List   | —       | • Item  |
+| Numbered List | —       | 1. Item |
 
 ---
 
@@ -50,6 +56,7 @@ LinkedIn strips HTML from posts. To preserve formatting, this extension converts
 ### From Source (Developer Mode)
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/rahulps1000/Linkedin-Rich-Post.git
    ```
@@ -63,8 +70,8 @@ LinkedIn strips HTML from posts. To preserve formatting, this extension converts
    - Select the cloned `Linkedin-Rich-Post` folder
 
 4. **Navigate to LinkedIn**
-   - Go to [linkedin.com/feed](https://www.linkedin.com/feed/)
-   - Click "Start a post" — the rich text editor will appear automatically
+   - Go to [linkedin.com](https://www.linkedin.com/)
+   - Click into any post composer, comment box, or DM — the toolbar appears automatically
 
 ---
 
@@ -72,92 +79,113 @@ LinkedIn strips HTML from posts. To preserve formatting, this extension converts
 
 ```
 Linkedin-Rich-Post/
-├── manifest.json       # Chrome Extension Manifest V3 configuration
-├── content.js          # Main content script — editor injection & syncing
-├── content.css         # LinkedIn-matching styles & dark mode support
-├── popup.html          # Extension popup UI
-├── popup.js            # Popup logic — toggle & character count
+├── manifest.json              # Chrome Manifest V3 configuration
+├── background.js              # Service worker — toggle state & badge management
+├── content/
+│   ├── content.js             # Core content script — editor detection, toolbar, formatting
+│   ├── content.css            # Toolbar styles (fallback, also injected inline)
+│   └── unicode-maps.js        # Unicode character mapping tables & conversion engine
+├── popup/
+│   ├── popup.html             # Extension popup UI
+│   ├── popup.css              # Popup styles
+│   └── popup.js               # Popup logic — toggle switch
 ├── icons/
-│   ├── icon16.png      # Toolbar icon
-│   ├── icon48.png      # Extensions page icon
-│   └── icon128.png     # Chrome Web Store icon
-└── lib/
-    ├── quill.min.js    # Vendored Quill.js 2.0.3 editor
-    └── quill.snow.css  # Quill Snow theme (overridden by content.css)
+│   ├── icon16.png             # Toolbar icon
+│   ├── icon48.png             # Extensions page icon
+│   └── icon128.png            # Chrome Web Store icon
+├── LICENSE                    # MIT License
+└── README.md
 ```
 
 ---
 
 ## 🏗️ Architecture
 
-### Composer Detection
+### Editor Detection
 
-LinkedIn is a React single-page application — DOM nodes are created and destroyed on navigation. A `MutationObserver` watches `document.body` for the post composer modal appearing, using multiple selector strategies for resilience:
+LinkedIn uses multiple editor implementations across its platform:
+
+| Area             | Editor Type                          | Detection Strategy                        |
+| ---------------- | ------------------------------------ | ----------------------------------------- |
+| Post Composer    | Quill (`.ql-editor`) inside Shadow DOM (`#interop-outlet`) | Shadow DOM traversal + `MutationObserver` |
+| Comments         | Tiptap/ProseMirror (`.ProseMirror`)  | Standard DOM query                        |
+| Direct Messages  | Native `contenteditable`             | Class-based detection (`msg-form__*`)     |
+
+The extension uses a **three-layer detection strategy**:
+
+1. **`MutationObserver`** on `document.body` — catches dynamically created editors
+2. **Shadow DOM observation** — watches `#interop-outlet` and any new shadow roots
+3. **Periodic scan** (every 2s) — fallback for edge cases where mutation events are missed
+
+### Floating Toolbar
+
+When a LinkedIn editor receives focus, a floating toolbar appears above it:
 
 ```
-.ql-editor[data-placeholder]
-div[role="textbox"][contenteditable="true"][aria-label]
-.share-creation-state div[contenteditable="true"]
+┌─────────────────────────────────────────────────────┐
+│  𝗕  │  𝘐  │  𝘽𝙄  │  U̲  │  S̶  │  𝙼  │  ≡  │  ≡  │  T×  │
+│ Bold  Ital  B+I   Und  Strk  Mono  Bul   Num  Clear│
+└─────────────────────────────────────────────────────┘
 ```
 
-### Editor Injection
+- Positioned via `getBoundingClientRect()` relative to the active editor
+- Renders in the main DOM (not inside Shadow DOM) at `z-index: 2147483647`
+- Prevents focus theft via `mousedown → preventDefault()`
+- Auto-hides on blur with a 200ms delay (to allow toolbar clicks)
 
-When the composer is detected:
-1. LinkedIn's native contenteditable div is **hidden** (kept in DOM for syncing)
-2. A Quill.js editor with a custom toolbar is **injected** in its place
-3. On every text change, content is converted to Unicode-formatted text and synced to the hidden LinkedIn editor
-4. The `mousedown` event on the Post button triggers a final sync before LinkedIn's click handler fires
-
-### Content Syncing
+### Content Flow
 
 ```
-Quill Editor → Delta → Unicode Formatted Text → LinkedIn's Hidden Editor → Post
+User selects text → Clicks format button → Unicode conversion → document.execCommand('insertText')
+                                                                          ↓
+                                                                  Dispatches InputEvent
+                                                                          ↓
+                                                              LinkedIn React state syncs
 ```
 
-The sync uses `dispatchEvent` with `InputEvent` and `Event('change')` to notify LinkedIn's React internals that content has changed.
+The formatting is **non-destructive** — the same button toggles formatting on/off. Clicking "Bold" on already-bold text reverts it to plain ASCII.
 
 ---
 
 ## ⌨️ Keyboard Shortcuts
 
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+B` | Bold |
-| `Ctrl+I` | Italic |
-| `Ctrl+U` | Underline |
+> **Note**: Keyboard shortcuts apply within LinkedIn's native editors. The toolbar buttons work with any text selection.
 
-These are handled natively by Quill.js.
+Select text, then click a toolbar button to apply/remove formatting.
 
 ---
 
-## 🔧 Configuration
+## 🔧 Popup
 
-Click the extension icon in Chrome's toolbar to access the popup:
+Click the extension icon in Chrome's toolbar:
 
-- **Toggle switch** — Enable or disable the rich text editor
-- **Character count** — Shows the current character count of your draft
-- **Status indicator** — Green dot when active, gray when disabled
+- **Toggle switch** — Enable or disable the toolbar globally
+- **Status indicator** — Shows "Active" (green) or "Disabled"
+- **Format preview** — Quick reference of available formats
 
-Settings are persisted via `chrome.storage.local`.
-
----
-
-## ⚠️ Known Limitations
-
-- **LinkedIn DOM changes**: LinkedIn frequently updates its class names and DOM structure. If the editor stops injecting, the selectors in `content.js` (`COMPOSER_SELECTORS` / `MODAL_SELECTORS`) may need updating.
-- **Unicode formatting scope**: Bold/italic Unicode mappings cover A-Z and a-z only. Digits, punctuation, and non-Latin characters pass through unformatted.
-- **Post formatting**: LinkedIn's servers strip all HTML. The Unicode approach preserves bold/italic visually, but underline uses combining characters that may render inconsistently across platforms.
-- **Extension reload**: After reloading the extension in `chrome://extensions`, refresh the LinkedIn tab to pick up the new content script.
+Settings are persisted via `chrome.storage.local` and synced across all LinkedIn tabs.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Editor**: [Quill.js 2.0.3](https://quilljs.com/) — lightweight, zero-dependency rich text editor
-- **Extension API**: Chrome Manifest V3 with content scripts
-- **Styling**: Vanilla CSS with `!important` overrides for specificity
-- **Storage**: `chrome.storage.local` for toggle state and character count
-- **No bundler**: Plain JavaScript — no build step required
+| Component   | Technology                                     |
+| ----------- | ---------------------------------------------- |
+| Extension   | Chrome Manifest V3                             |
+| Detection   | MutationObserver + Shadow DOM traversal        |
+| Formatting  | Unicode Mathematical Alphanumeric Symbols      |
+| UI          | Vanilla JS + CSS (inline injection for safety) |
+| Storage     | `chrome.storage.local`                         |
+| Build       | None — plain JavaScript, no bundler required   |
+
+---
+
+## ⚠️ Known Limitations
+
+- **Unicode scope**: Bold, italic, bold-italic, and monospace mappings cover **A–Z, a–z, and 0–9** only. Punctuation, symbols, and non-Latin characters pass through unformatted.
+- **Combining characters**: Underline (U+0332) and strikethrough (U+0336) may render inconsistently across platforms and fonts.
+- **LinkedIn DOM changes**: LinkedIn frequently updates its class names and DOM structure. If the toolbar stops appearing, the detection selectors in `content.js` may need updating.
+- **Extension reload**: After reloading the extension in `chrome://extensions/`, refresh the LinkedIn tab to re-inject the content script.
 
 ---
 
@@ -174,13 +202,6 @@ Settings are persisted via `chrome.storage.local`.
 ## 📄 License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- [Quill.js](https://quilljs.com/) — the rich text editor powering this extension
-- [LinkedIn](https://www.linkedin.com/) — the platform this extension enhances
 
 ---
 

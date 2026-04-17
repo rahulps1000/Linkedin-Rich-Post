@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "LinkedIn Rich Post",
   "version": "1.0.0",
-  "description": "Format your LinkedIn posts, comments, and DMs with bold, italic, underline, strikethrough, and lists using Unicode — right inside LinkedIn.",
+  "description": "Enhance LinkedIn's post composer with a rich text editor — bold, italic, lists, and more.",
   "permissions": ["storage"],
   "icons": {
     "16": "icons/icon16.png",
