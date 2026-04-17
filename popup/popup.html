@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Rich Post</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <div class="popup-header">
+      <img src="../icons/icon48.png" alt="LinkedIn Rich Post" class="popup-logo">
+      <div class="popup-title">
+        <h1>Rich Post</h1>
+        <p class="popup-subtitle">Format your LinkedIn text</p>
+      </div>
+    </div>
+
+    <!-- Toggle Section -->
+    <div class="popup-toggle-section">
+      <div class="toggle-info">
+        <span class="toggle-label">Extension</span>
+        <span class="toggle-status" id="statusText">Active</span>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleSwitch" checked>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+    <!-- Features List -->
+    <div class="popup-features">
+      <div class="feature-item"><span class="feature-icon">𝗕</span> Bold</div>
+      <div class="feature-item"><span class="feature-icon">𝘐</span> Italic</div>
+      <div class="feature-item"><span class="feature-icon">U̲</span> Underline</div>
+      <div class="feature-item"><span class="feature-icon">S̶</span> Strikethrough</div>
+      <div class="feature-item"><span class="feature-icon">•</span> Lists</div>
+      <div class="feature-item"><span class="feature-icon">𝙼</span> Monospace</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="popup-footer">
+      <p>Select text in LinkedIn → click a format button</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
