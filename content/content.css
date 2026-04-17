@@ -1,0 +1,186 @@
+/* ── LinkedIn Rich Post — Content Styles ─────────────────────────── */
+
+/* ── Toolbar Container ───────────────────────────────────────────── */
+
+.lrp-toolbar {
+  position: absolute;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 6px;
+  background: #1b1f23;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.35),
+    0 1px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  user-select: none;
+}
+
+.lrp-toolbar.lrp-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ── Toolbar Divider ─────────────────────────────────────────────── */
+
+.lrp-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0 3px;
+  flex-shrink: 0;
+}
+
+/* ── Toolbar Buttons ─────────────────────────────────────────────── */
+
+.lrp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #c4c7cc;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  line-height: 1;
+  padding: 0;
+  font-family: inherit;
+}
+
+.lrp-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e8eaed;
+}
+
+.lrp-btn:active {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(0.92);
+}
+
+.lrp-btn.lrp-active {
+  background: rgba(10, 102, 194, 0.25);
+  color: #8ab4f8;
+}
+
+/* ── Tooltip ─────────────────────────────────────────────────────── */
+
+.lrp-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  padding: 4px 8px;
+  background: #303437;
+  color: #e8eaed;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.15s ease;
+}
+
+.lrp-btn:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* ── SVG icons inside buttons ────────────────────────────────────── */
+
+.lrp-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  stroke: none;
+}
+
+/* ── Strip Format button special ─────────────────────────────────── */
+
+.lrp-btn.lrp-strip {
+  font-size: 12px;
+  letter-spacing: -0.5px;
+}
+
+/* ── Dark mode adjustments for LinkedIn ──────────────────────────── */
+
+body.theme--dark .lrp-toolbar,
+html[data-theme="dark"] .lrp-toolbar {
+  background: #292d31;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* ── Light mode (LinkedIn default) ───────────────────────────────── */
+
+@media (prefers-color-scheme: light) {
+  .lrp-toolbar:not(body.theme--dark .lrp-toolbar) {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.12),
+      0 1px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .lrp-toolbar:not(body.theme--dark .lrp-toolbar) .lrp-btn {
+    color: #5f6368;
+  }
+
+  .lrp-toolbar:not(body.theme--dark .lrp-toolbar) .lrp-btn:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: #202124;
+  }
+
+  .lrp-toolbar:not(body.theme--dark .lrp-toolbar) .lrp-btn.lrp-active {
+    background: rgba(10, 102, 194, 0.12);
+    color: #0a66c2;
+  }
+
+  .lrp-toolbar:not(body.theme--dark .lrp-toolbar) .lrp-divider {
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  .lrp-toolbar:not(body.theme--dark .lrp-toolbar) .lrp-btn::after {
+    background: #3c4043;
+    color: #ffffff;
+  }
+}
+
+/* ── Responsive: smaller toolbar on narrow viewports ─────────────── */
+
+@media (max-width: 600px) {
+  .lrp-toolbar {
+    padding: 3px 4px;
+    gap: 1px;
+    border-radius: 8px;
+  }
+
+  .lrp-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+
+  .lrp-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+}
