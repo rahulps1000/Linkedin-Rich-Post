@@ -9,6 +9,16 @@
 
 ---
 
+## 🔗 Install from Chrome Web Store
+
+<p align="left">
+  <a href="https://chromewebstore.google.com/detail/linkedin-rich-post/njcfpoegabgfbohcbagedmpfggkjofme" target="_blank">
+    <img src="https://developer.chrome.com/static/docs/webstore/branding/image/iNEddTyWiMfLSwFD6qGq.png" alt="Add to Chrome" height="80">
+  </a>
+</p>
+
+---
+
 ## ✨ Features
 
 | Feature                       | Description                                                                         |
